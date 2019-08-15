@@ -12,4 +12,5 @@ Experimente você mesmo:
 
 *Caso contrário*
 1. Basta abrir o arquivo "index.html" em seu navegador
+
 obs.: algumas funcionalidades podem não funcionar corretamente nesse caso.
