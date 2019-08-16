@@ -1,5 +1,6 @@
 class JoiaDoPoder extends JoiaDoInfinito{
-	constructor(nome, pos, efeito, duracao) {
-		super(nome, pos, efeito, duracao);
+	constructor(nome, pos, duracao) {
+		super(nome, pos, duracao);
+		this.efeito = 5;
 	}
 }

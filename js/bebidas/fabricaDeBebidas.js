@@ -53,9 +53,10 @@ class FabricaDeBebidas {
 	}
 
 	sortearBebida() {
-		if (this.bebidasGeradas === 0) {
-			return -1;
-		} else if (this.bebidasGeradas % 2 === 0) {
+		// if (this.bebidasGeradas === 0) {
+		// 	return -1;
+		// } else 
+		if (this.bebidasGeradas % 2 === 0) {
 			return floor(random(this.joiasDisponiveis.length));
 		}
 		return -1;

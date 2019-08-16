@@ -1,7 +1,7 @@
 class JoiaDoInfinito extends BebidaComponent{
-	constructor(nome, pos, efeito, duracao) {
+	constructor(nome, pos, duracao) {
 		super(nome, pos);
-		this.efeito = efeito;
+		this.efeito;
 		this.duracao = duracao;
 	}
 }

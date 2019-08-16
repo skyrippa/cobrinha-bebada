@@ -2,7 +2,7 @@ var snake;
 var bar;
 
 function setup() {
-  createCanvas(400,400);
+  createCanvas(600,600);
   frameRate(10);
   snake = new Snake();
   bar = new ControleBebidas();
@@ -24,8 +24,9 @@ function draw() {
   }
   bar.display();
   // checar se bebida foi consumida
-  if (snake.beber(bar.bebidaAtual.pos)) {
-  	bar.foiConsumida = true;
+  if (snake.beber(bar.bebidaAtual)) {
+  	// snake.efeito = bar.bebidaAtual.efeito;
+    bar.foiConsumida = true;
     bar.bebidaAtual = undefined;
   }
 }

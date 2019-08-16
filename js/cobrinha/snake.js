@@ -6,6 +6,12 @@ class Snake {
 		this.xspeed = 1;
 		this.yspeed = 0;
 		this.scale = 20;
+		//this.efeito = 0;
+		this.pontuacao = 0;
+	}
+
+	pontuar(bebida) {
+
 	}
 
 	checarBatida = function() {
@@ -20,11 +26,13 @@ class Snake {
 		return false;
 	}
 
-	beber(pos) {
+	beber({ pos }) {
+		// let pos = {bebida};
 		let d = dist(this.head.x, this.head.y, pos.x, pos.y);
 		if (d < 1) {
 			let no = new No(pos.x, pos.y);
 			this.body.push(no);
+			// this.pontuar(bebida);
 			return true;
 		} else {
 			return false;
@@ -41,9 +49,40 @@ class Snake {
 		}
 	}
 
+	// efeito 4
+	// mudarLocal(x,y) {
+	// 	this.moveNormal(x,y);
+	// 	for (let node of this.body) {
+	// 		node.x /= 2;
+	// 		node.y /= 2;
+	// 	}
+	// }
+
+	// efeito 5
+	// moveRapido(x, y) {
+	// 	this.xspeed = x*2;
+	// 	this.yspeed = y*2;
+	// }
+
+	// efeito 0
+	// moveNormal(x, y) {
+	// 	this.xspeed = x;
+	// 	this.yspeed = y;
+	// }
+
 	direcao(x, y) {
 		this.xspeed = x;
 		this.yspeed = y;
+		// switch(this.efeito) {
+		// 	case 5:
+		// 		this.moveRapido(x,y);
+		// 	break;
+		// 	case 4:
+		// 		this.mudarLocal(x,y);
+		// 	break;
+		// 	default:
+		// 		this.moveNormal(x,y);
+		// }
 	}
 
 	update() {
