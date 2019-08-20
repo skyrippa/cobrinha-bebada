@@ -1,6 +1,5 @@
 class Lokal extends BebidaComponent{
-	constructor(nome, pos) {
-		super(nome, pos);
-		this.efeito = 0;
+	constructor(nome, pos, img = undefined) {
+		super(nome, pos, img);
 	}
 }

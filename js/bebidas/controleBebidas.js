@@ -1,9 +1,72 @@
 class ControleBebidas {
 	constructor() {
-		this.scale = 20;
+		this.scale = 60;
 		this.foiConsumida = false;
 		this.bebidaAtual = undefined;
 		this.fabricaDeBebidas = new FabricaDeBebidas();
+		this.images = {
+			lokal: undefined,
+			alma:undefined,
+			mente: undefined,
+			realidade: undefined,
+			espaco: undefined,
+			poder: undefined,
+			tempo: undefined
+		};
+	}
+
+	addImagem() {
+		let nome = this.bebidaAtual.nome;
+		let img;
+		switch(nome) {
+			case 'lokal':
+				this.bebidaAtual.img = this.images.lokal;
+			break;
+			case 'alma':
+				this.bebidaAtual.img = this.images.alma;
+			break;
+			case 'espaco':
+				this.bebidaAtual.img = this.images.espaco;
+			break;
+			case 'mente':
+				this.bebidaAtual.img = this.images.mente;
+			break;
+			case 'poder':
+				this.bebidaAtual.img = this.images.poder;
+			break;
+			case 'realidade':
+				this.bebidaAtual.img = this.images.realidade;
+			break;
+			case 'tempo':
+				this.bebidaAtual.img = this.images.tempo;
+			break;
+		}
+	}
+
+	checkConsumo() {
+		return this.foiConsumida;
+	}
+
+	display() {
+		let img = this.bebidaAtual.img;
+		let x = this.bebidaAtual.pos.x;
+		let y = this.bebidaAtual.pos.y;
+		let scl = this.scale;
+		image(img, x, y, scl, scl);
+	}
+
+	gerarNova() {
+		let pos = this.sortearPosicao();
+		this.bebidaAtual = this.fabricaDeBebidas.gerarBebida(pos);
+		this.addImagem();
+		this.foiConsumida = false;
+	}
+
+	horaDeGerar() {
+		if (this.bebidaAtual === undefined && this.foiConsumida === true) {
+			return true;
+		}
+		return false;
 	}
 
 	sortearPosicao() {
@@ -13,48 +76,14 @@ class ControleBebidas {
 		return pos.mult(this.scale);
 	}
 
-	checkConsumo() {
-		return this.foiConsumida;
-	}
-
-	gerarNova() {
-		if (this.fabricaDeBebidas.joiasDisponiveis.length === 0) {
-			console.log('TODAS AS JOIAS GERADAS');
-			noLoop();
+	update() {
+		if (this.horaDeGerar()) {
+			this.gerarNova();
+			return true;
 		}
-		let pos = this.sortearPosicao();
-		this.bebidaAtual = this.fabricaDeBebidas.gerarBebida(pos);
-		this.foiConsumida = false;
-		console.log(this.bebidaAtual);
-	}
-
-	display() {
-		let colors;
-		switch(this.bebidaAtual.nome) {
-			case 'lokal':
-				colors = createVector(255,0,0);
-			break;
-			case 'alma':
-				colors = createVector(255,0,255);
-			break;
-			case 'espaco':
-				colors = createVector(0, 128, 155);
-			break;
-			case 'mente':
-				colors = createVector(255,255,0);
-			break;
-			case 'poder':
-				colors = createVector(204,0,204);
-			break;
-			case 'realidade':
-				colors = createVector(255,51,51);
-			break;
-			case 'tempo':
-				colors = createVector(0,255,0);
-			break;
+		if (this.fabricaDeBebidas.estoqueZerado()) {
+			return false;
 		}
-		fill(colors.x, colors.y, colors.z);
-		stroke(255);
-		square(this.bebidaAtual.pos.x, this.bebidaAtual.pos.y, this.scale);
+		return true;
 	}
 }

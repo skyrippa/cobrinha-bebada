@@ -1,6 +1,5 @@
-class JoiaDoEspaco extends JoiaDoInfinito{
-	constructor(nome, pos, duracao) {
-		super(nome, pos, duracao);
-		this.efeito = 4;
+class JoiaDoEspaco extends BebidaComponent {
+	constructor(nome, pos, img = undefined) {
+		super(nome, pos, img);
 	}
 }

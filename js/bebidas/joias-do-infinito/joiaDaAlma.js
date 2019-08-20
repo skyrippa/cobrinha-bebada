@@ -1,6 +1,5 @@
-class JoiaDaAlma extends JoiaDoInfinito {
-	constructor(nome, pos, duracao) {
-		super(nome, pos, duracao);
-		this.efeito = 1;
+class JoiaDaAlma extends BebidaComponent {
+	constructor(nome, pos, img = undefined) {
+		super(nome, pos, img);
 	}
 }

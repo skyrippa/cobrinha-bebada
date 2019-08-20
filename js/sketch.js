@@ -1,31 +1,58 @@
 var snake;
 var bar;
+let estadoPartida;
+
+function preload() {
+  snake = new Snake();
+  snake.img = loadImage('images/Cobra.jpeg');
+
+  // loading imagens das bebidas
+  bar = new ControleBebidas();
+  bar.images.alma = loadImage('images/Alma.jpeg');
+  bar.images.lokal = loadImage('images/Lokal.jpeg');
+  bar.images.espaco = loadImage('images/Espaco.jpeg');
+  bar.images.mente = loadImage('images/Mente.jpeg');
+  bar.images.poder = loadImage('images/Poder.jpeg');
+  bar.images.realidade = loadImage('images/Reality.jpeg');
+  bar.images.tempo = loadImage('images/Tempo.jpeg');
+}
 
 function setup() {
   createCanvas(600,600);
-  frameRate(10);
-  snake = new Snake();
-  bar = new ControleBebidas();
+  frameRate(6);
+  // gerando 1a bebida
   bar.gerarNova();
+  estadoPartida = true;
 }
 
 function draw() {
-  background(51);
+  background(0);
+
   // cobrinha
-  snake.update();
+  estadoPartida = snake.update();
   snake.display();
-  if (snake.checarBatida()) {
-  	noLoop();
+
+  // ver se cobra bateu em algo
+  if (!estadoPartida) {
+    console.log('game over');
+    noLoop();
   }
 
   // bebidas
-  if (bar.checkConsumo && bar.bebidaAtual === undefined) {
-    bar.gerarNova();
-  }
+  estadoPartida = bar.update();
   bar.display();
-  // checar se bebida foi consumida
+
+  // ver se acabaram as bebidas
+  if (!estadoPartida) {
+    console.log('game over');
+    noLoop();
+  }
+
+  beber();
+}
+
+function beber() {
   if (snake.beber(bar.bebidaAtual)) {
-  	// snake.efeito = bar.bebidaAtual.efeito;
     bar.foiConsumida = true;
     bar.bebidaAtual = undefined;
   }
