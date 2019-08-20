@@ -1,5 +1,5 @@
-class JoiaDaMente extends JoiaDoInfinito{
-	constructor(nome, pos, efeito, duracao) {
-		super(nome, pos, efeito, duracao);
+class JoiaDaMente extends BebidaComponent {
+	constructor(nome, pos, img = undefined) {
+		super(nome, pos, img);
 	}
 }

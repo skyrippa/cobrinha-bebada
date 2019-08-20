@@ -1,8 +1,35 @@
 class FabricaDeBebidas {
 	constructor() {
-		this.bebidasGeradas = 0;
+		this.numBebidasGeradas = 0;
 		this.bebidaSorteada;
 		this.joiasDisponiveis = [1,2,3,4,5,6];
+	}
+
+	estoqueZerado() {
+		if (this.numBebidasGeradas === 12) {
+			console.log('Perda Total!');
+			return true;
+		}
+		return false;
+	}
+
+	gerarBebida(pos) {
+		// checando se ainda pode gerar joias
+		let numSorteado;
+		if (this.joiasDisponiveis.length > 0){
+			numSorteado = this.sortearBebida();
+		} else {
+			numSorteado = -1;
+		}
+		
+		this.numBebidasGeradas++;
+		// caso lokal seja sorteada
+		if (numSorteado === -1) {
+			this.bebidaSorteada = FabricaLokal.criarBebida(pos);
+			return this.bebidaSorteada;
+		}
+		// caso joia seja sorteada
+		return this.gerarJoia(pos, numSorteado);
 	}
 
 	gerarJoia(pos, numSorteado) {
@@ -40,22 +67,8 @@ class FabricaDeBebidas {
 		}
 	}
 
-	gerarBebida(pos) {
-		let numSorteado = this.sortearBebida();
-		this.bebidasGeradas++;
-		// caso lokal seja sorteada
-		if (numSorteado === -1) {
-			this.bebidaSorteada = FabricaLokal.criarBebida(pos);
-			return this.bebidaSorteada;
-		}
-		// caso joia seja sorteada
-		return this.gerarJoia(pos, numSorteado);
-	}
-
 	sortearBebida() {
-		if (this.bebidasGeradas === 0) {
-			return -1;
-		} else if (this.bebidasGeradas % 2 === 0) {
+		if (this.numBebidasGeradas % 2 === 0) {
 			return floor(random(this.joiasDisponiveis.length));
 		}
 		return -1;
