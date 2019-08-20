@@ -4,7 +4,8 @@ Projeto Final da disciplina de Programação e Padrões de Projeto, do curso de 
 Experimente você mesmo:
 
 *Link do Jogo*
-skyrippa.github.io/cobrinha-bebada
+
+<skyrippa.github.io/cobrinha-bebada>
 
 *Caso tenha yarn instalado*
 1. Clone este repositório
