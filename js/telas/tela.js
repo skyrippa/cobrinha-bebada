@@ -1,8 +1,9 @@
 class Tela {
-	constructor(src, btnText, creditos = 'Desenvolvido por Banco de Gados, 2019') {
+	constructor(src, musica, btnText, creditos = 'Desenvolvido por Banco de Gados, 2019') {
 		this.img = createImg(src);
 		this.botao = createButton(btnText);
 		this.creditos = createP(creditos)
+		this.musica = musica;
 	}
 	config() {
 		// css img
@@ -34,10 +35,13 @@ class Tela {
 		this.img.show();
 		this.botao.show();
 		this.creditos.show();
+		this.musica.setVolume(0.5)
+		this.musica.loop()
 	}
 	hide() {
 		this.img.hide();
 		this.botao.hide();
 		this.creditos.hide();
+		this.musica.stop()
 	}
 }

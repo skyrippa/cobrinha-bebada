@@ -1,6 +1,6 @@
 class TelaGameOver extends Tela {
-	constructor(img, btnText = 'Voltar ao Menu', creditos) {
-		super(img, btnText, creditos);
+	constructor(img, musica, btnText = 'Voltar ao Menu', creditos) {
+		super(img, musica, btnText, creditos);
 		this.pontuacao = createP('0');
 	}
 
@@ -46,6 +46,7 @@ class TelaGameOver extends Tela {
 		this.botao.show();
 		this.pontuacao.show();
 		this.creditos.show()
+		this.musica.play()
 	}
 
 	hide() {
@@ -53,5 +54,6 @@ class TelaGameOver extends Tela {
 		this.botao.hide();
 		this.pontuacao.hide();	
 		this.creditos.hide()
+		this.musica.stop()
 	}
 }
