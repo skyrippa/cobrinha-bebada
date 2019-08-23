@@ -1,5 +1,5 @@
 class TelaPT extends Tela {
-	constructor(img, btnText = 'Menu Inicial') {
-		super(img, btnText);
+	constructor(img, btnText = 'Menu Inicial', creditos) {
+		super(img, btnText, creditos);
 	}
 }
