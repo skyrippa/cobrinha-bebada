@@ -1,11 +1,11 @@
 class Snake {
-	constructor() {
+	constructor(tamCanvas) {
 		// cobra instancia cabeça
 		this.head = new No();
 		this.body = [this.head];
 		this.xspeed = 1;
 		this.yspeed = 0;
-		this.scale = 60;
+		this.scale = tamCanvas/10;
 		this.pontuacao = 0;
 		this.img;
 	}
@@ -26,7 +26,6 @@ class Snake {
 			let pos = createVector(this.body[i].x, this.body[i].y);
 			let d = dist(this.head.x, this.head.y, pos.x, pos.y);
 			if (d < 1) {
-				console.log('morri!');
 				this.pontuar();
 				return true;
 			}
@@ -48,7 +47,6 @@ class Snake {
 
 	pontuar() {
 		this.pontuacao = this.body.length * 10;
-		console.log('Pontuação:', this.pontuacao);
 	}
 
 	update() {

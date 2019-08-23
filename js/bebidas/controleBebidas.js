@@ -1,6 +1,6 @@
 class ControleBebidas {
-	constructor() {
-		this.scale = 60;
+	constructor(tamCanvas) {
+		this.scale = tamCanvas/10;
 		this.foiConsumida = false;
 		this.bebidaAtual = undefined;
 		this.fabricaDeBebidas = new FabricaDeBebidas();

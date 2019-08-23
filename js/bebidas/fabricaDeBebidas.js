@@ -7,7 +7,6 @@ class FabricaDeBebidas {
 
 	estoqueZerado() {
 		if (this.numBebidasGeradas === 12) {
-			console.log('Perda Total!');
 			return true;
 		}
 		return false;
