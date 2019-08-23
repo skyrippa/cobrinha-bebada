@@ -1,7 +1,8 @@
 class Tela {
-	constructor(src, btnText) {
+	constructor(src, btnText, creditos = 'Desenvolvido por Banco de Gados, 2019') {
 		this.img = createImg(src);
 		this.botao = createButton(btnText);
+		this.creditos = createP(creditos)
 	}
 	config() {
 		// css img
@@ -10,8 +11,13 @@ class Tela {
 		this.img.style('max-width', '600px')
 	  	this.img.style('height', 'auto')
 
+	  	// css creditos
+	  	this.creditos.style("font-size: 10px")
+	  	this.creditos.position(200, 570)
+	  	this.creditos.style("color: white")
+
 	  	// css botao
-	  	let tam = 235 - this.botao.width / 2
+	  	let tam = 250 - this.botao.width / 2
 	  	this.botao.position(tam, 410)
 	  	this.botao.style("background-color: #4CAF50")
 	  	this.botao.style("padding", "15px 25px");
@@ -27,9 +33,11 @@ class Tela {
 	  	this.botao.mouseOut(()=> this.botao.style("background-color: #4CAF50"))
 		this.img.show();
 		this.botao.show();
+		this.creditos.show();
 	}
 	hide() {
 		this.img.hide();
 		this.botao.hide();
+		this.creditos.hide();
 	}
 }

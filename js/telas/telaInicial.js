@@ -1,5 +1,5 @@
 class TelaInicial extends Tela {
-	constructor(img, btnText = 'JOGAR') {
-		super(img, btnText);
+	constructor(img, btnText = 'JOGAR', creditos) {
+		super(img, btnText, creditos);
 	}
 }
