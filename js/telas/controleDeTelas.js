@@ -1,5 +1,5 @@
 class ControleDeTelas {
-	constructor(imgs, tamCanvas) {
+	constructor(imgs, tamCanvas, sounds) {
 		this.telaInicial;
 		this.telaGameOver;
 		this.telaPT;
@@ -7,16 +7,19 @@ class ControleDeTelas {
 		this.telaAtual;
 		this.tamCanvas = tamCanvas;
 		this.imgs = imgs;
+		this.sounds = sounds
 	}
 
 	iniciar() {
-		this.telaInicial = new TelaInicial(this.imgs.telaInicial);
+		this.sounds.gameOver = loadSound('soundtracks/game-over-boate-azul.mp3')
+  		this.sounds.perdaTotal = loadSound('soundtracks/pt-globo-esporte.mp3')
+		this.telaInicial = new TelaInicial(this.imgs.telaInicial, this.sounds.intro);
 		this.telaInicial.config();
 		this.telaInicial.show();
-		this.telaGameOver = new TelaGameOver(this.imgs.gameOver);
+		this.telaGameOver = new TelaGameOver(this.imgs.gameOver, this.sounds.gameOver);
 		this.telaGameOver.config();
 		this.telaGameOver.hide();
-		this.telaPT = new TelaPT(this.imgs.perdaTotal);
+		this.telaPT = new TelaPT(this.imgs.perdaTotal, this.sounds.perdaTotal);
 		this.telaPT.config();
 		this.telaPT.hide();
 	}
@@ -30,7 +33,7 @@ class ControleDeTelas {
 	startGame() {
 		this.telaInicial.hide();
 		this.telaPT.hide();
-		this.telaJogo = new TelaJogo(this.tamCanvas);
+		this.telaJogo = new TelaJogo(this.tamCanvas, this.sounds.game);
 		this.telaJogo.resetGame(this.imgs);
 	}
 

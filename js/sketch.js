@@ -13,17 +13,26 @@ let images = {
   telaInicial: undefined,
   perdaTotal: undefined,
 };
+let sounds = {
+  intro: undefined,
+  game: undefined,
+  gameOver: undefined,
+  perdaTotal: undefined,
+}
 
 function preload() {
   // carregar imagens
   loadImages();
+  sounds.intro = loadSound('soundtracks/intro-grande-familia.mp3')
+  sounds.game = loadSound('soundtracks/game-orgia-de-traveco.mp3')
+  //loadSounds()
   //setSize();
 }
 
 function setup() {
   createCanvas(600,600);
   frameRate(6);
-  jogo = new ControleDeTelas(images, 600);
+  jogo = new ControleDeTelas(images, 600, sounds);
   jogo.iniciar();
   let btnJogar = jogo.telaInicial.botao;
   let btnMenu1 = jogo.telaGameOver.botao;
@@ -55,19 +64,26 @@ function keyPressed() {
 }
 
 function loadImages() {
-  images.cobra = loadImage('images/Cobra.jpeg');
-  images.alma = loadImage('images/Alma.jpeg');
-  images.lokal = loadImage('images/Lokal.jpeg');
-  images.espaco = loadImage('images/Espaco.jpeg');
-  images.mente = loadImage('images/Mente.jpeg');
-  images.poder = loadImage('images/Poder.jpeg');
-  images.realidade = loadImage('images/Reality.jpeg');
-  images.tempo = loadImage('images/Tempo.jpeg');
+  images.cobra = loadImage('images/Cobra.jpg');
+  images.alma = loadImage('images/Alma.jpg');
+  images.lokal = loadImage('images/Lokal.jpg');
+  images.espaco = loadImage('images/Espaco.jpg');
+  images.mente = loadImage('images/Mente.jpg');
+  images.poder = loadImage('images/Poder.jpg');
+  images.realidade = loadImage('images/Reality.jpg');
+  images.tempo = loadImage('images/Tempo.jpg');
   images.gameOver = 'images/Game Over.jpg';
   images.perdaTotal = 'images/Perda Total.jpg';
   images.telaInicial = 'images/Tela Inicial.jpg';
-  loadFont('Retro Gaming.ttf');
+  //loadFont('Retro Gaming.ttf');
 }
+
+// function loadSounds() {
+//   sounds.intro = loadSound('soundtracks/intro-grande-familia.mp3')
+//   sounds.game = loadSound('soundtracks/game-orgia-de-traveco.mp3')
+//   sounds.gameOver = loadSound('soundtracks/game-over-boate-azul.mp3')
+//   sounds.perdaTotal = loadSound('soundtracks/pt-globo-esporte.mp3')
+// }
 
 // function setSize() {
 //   if (windowWidth > windowHeight) {

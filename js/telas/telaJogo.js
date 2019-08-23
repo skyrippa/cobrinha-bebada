@@ -1,9 +1,10 @@
 class TelaJogo {
-	constructor(tamCanvas) {
+	constructor(tamCanvas, musica) {
 		this.snake;
 		this.bar;
 		this.estadoPartida;
 		this.tamCanvas = tamCanvas;
+		this.musica = musica
 	}
 
 	beber() {
@@ -20,6 +21,7 @@ class TelaJogo {
 
 	  	// ver se cobra bateu em algo
 	  	if (!this.estadoPartida) {
+	  		this.musica.stop()
 	    	return 1;
 	  	}
 
@@ -29,6 +31,7 @@ class TelaJogo {
 
 	  	// ver se acabaram as bebidas
 	  	if (!this.estadoPartida) {
+	  		this.musica.stop()
 	    	return 2;
 	  	}
 
@@ -51,6 +54,8 @@ class TelaJogo {
 	  	this.bar.images.tempo = images.tempo;
 
 	  	this.bar.gerarNova();
+	  	this.musica.setVolume(0.5)
+	  	this.musica.loop()
 	}
 	
 }
