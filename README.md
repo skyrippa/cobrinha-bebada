@@ -15,9 +15,3 @@ skyrippa.github.io/cobrinha-bebada
 3. O passo anterior é necessário para instalar dependências como live-server
 4. Novamente, digite no terminal: "live-server"
 5. Divirta-se!
----
-*Caso contrário*
----
-1. Basta abrir o arquivo "index.html" em seu navegador
-
-obs.: algumas funcionalidades podem não funcionar corretamente nesse caso.
